@@ -15,26 +15,57 @@ const CardGroup = (props) => (
 );
 
 // subcat of cardgroup
+// const Card = (props) => (
+//     <div className="card cardGroup__card">
+//         <div className="card__description cardGroup__cardDescription">
+//             <div className={`icon fa ${props.icon} card__descriptionIcon`}></div>
+//             <div className="card__descriptionText">
+//                 {props.description}
+//                 {/* null is absense of obj, and react likes null if not there */}
+//                 {props.hint && <br/>}
+//                 {props.hint && <span>{props.hint}</span>}
+//             </div>
+//         </div>
+//         <div className="card__price">{props.price}</div>
+//     </div>
+// );
 const Card = (props) => (
     <div className="card cardGroup__card">
         <div className="card__description cardGroup__cardDescription">
             <div className={`icon fa ${props.icon} card__descriptionIcon`}></div>
             <div className="card__descriptionText">
-                {props.description}
-                {/* null is absense of obj, and react likes null if not there */}
-                {props.hint && <br/>}
-                {props.hint && <span>{props.hint}</span>}
+                {props.children}
             </div>
         </div>
         <div className="card__price">{props.price}</div>
     </div>
 );
+const CardDescription = props => (
+    <div>{props.description}
+    {/* null is absense of obj, and react likes null if not there */}
+    {props.hint && <br/>}
+    {props.hint && <span>{props.hint}</span>}
+    </div>
+)
 
+// const App = () => (
+//     <CardGroup>
+//         <Card icon="fa-thumbs-o-up" description="Trial" price="Free!"/>
+//         <Card icon="fa-trophy" description="Basic tier" hint="(most popular)" price="$10.00"/>
+//         <Card icon="fa-bolt" description="Advanced tier" hint="(only for enterprise-level professionals)" price="$6,000.00"/>
+//     </CardGroup>
+// );
 const App = () => (
     <CardGroup>
-        <Card icon="fa-thumbs-o-up" description="Trial" price="Free!"/>
-        <Card icon="fa-trophy" description="Basic tier" hint="(most popular)" price="$10.00"/>
-        <Card icon="fa-bolt" description="Advanced tier" hint="(only for enterprise-level professionals)" price="$6,000.00"/>
+        <Card icon="fa-thumbs-o-up" price="Free!">
+            <CardDescription description="Trial"/>
+        </Card>
+        <Card icon="fa-trophy" price="$10.00">
+            <CardDescription description="Basic tier" hint="(most popular)"/>
+        </Card>
+        <Card icon="fa-bolt" price="$6,000.00">
+            <CardDescription description="Advanced tier" hint="(only for enterprise-level professionals)"/>
+        </Card>
     </CardGroup>
 );
 
